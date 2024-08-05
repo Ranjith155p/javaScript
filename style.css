@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+--primary-clr:linear-gradient(149.96deg, #301F81 12.51%, #0F0441 89.53%);
+--white:#ffffff
+}
+*{
+box-sizing: border-box;
+color: var(--primary-clr);
+}
+.home{
+    background: var(--primary-clr);
+    color :var(--white);
+    height:100vh;
+}
+/* h2{
+    font-family: 100 !important;
+} */
+ a{
+    text-decoration: none !important;
+ }
+ li {
+    list-style-type: none;
+   
+ }
+ nav a {
+    color:var(--white);
+    padding:5px;
+    border-radius: 15%;
+    font-size: 16px !important;
+ }
+
+ nav li  :hover{
+background-color:#FFFFFF21;
+
+ }
+.emp-list{
+background-color: hwb(167 89% 6%);
+color: var(--primary-clr) !important;
+ }
