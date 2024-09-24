@@ -27,17 +27,20 @@ mainDiv.addEventListener("click", (event) => {
   }
 });
 // fetch data
+let alldata;
 async function getData() {
   try {
     const apiUrl = "http://localhost:3000/employees";
     const response = await fetch(apiUrl);
     const data = await response.json();
     console.log("Data fetched:", data);
+    alldata = data;
     displayData(data);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
+
 console.log(getData());
 
 function displayData(data) {
@@ -51,7 +54,7 @@ function displayData(data) {
   <td>  ${value.email}</td>
    <td>  ${value.phone}</td>
     <td>  ${value.gender}</td>
-     <td>  ${value.dob.split("-").reverse().join("-")}</td>
+     <td>  ${value.dob}</td>
       <td>  ${value.country}</td>
       <td>
       <div class="dropdown"id="crud">
@@ -62,8 +65,8 @@ function displayData(data) {
         </button>
         <ul class="dropdown-menu ">
           <li><a class="dropdown-item active"href="#">View Details</a></li>
-          <li><a class="dropdown-item"  href="#">Edit</a></li>
-          <li><a class="dropdown-item" onlick= deleteEmployee() href="#">Delete</a></li>
+          <li><a class="dropdown-item" onclick =editemployee() href="#">Edit</a></li>
+          <li><a class="dropdown-item" onclick ="deleteEmployee('${value.id}')" href="#">Delete</a></li>
         </ul>
          </div>
       </td>
@@ -111,12 +114,39 @@ document.getElementById("submit").addEventListener("click", () => {
     username: document.getElementById("username").value,
     password: document.getElementById("password").value,
     gender: gender,
-    dob:date.split("-").reverse().join("-"),
+    dob: date.split("-").reverse().join("-"),
   };
   addNewEmployee(formElementCollection);
 });
-function deleteEmployee()
+async function editemployee()
 {
-  document.getElementById("delete");
-
+  try {
+    const newEmp = await fetch(`http://localhost:3000/employees/${id}`, {
+      method: "",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+ catch (error) {
+  console.error("Error fetching data:", error);
+}
+}
+async function deleteEmployee(id) {
+  try {
+    const newEmp = await fetch(`http://localhost:3000/employees/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const content = await newEmp.json();
+     if(content){
+      const filtereData = alldata.filter((emp)=> emp.id != id)
+      console.log(filtereData);
+      displayData(filtereData)
+     }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 }
