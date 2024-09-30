@@ -48,7 +48,12 @@ nav li :hover {
   border: none;
   padding: 5px;
 }
-
+#submit {
+  display: none;
+}
+#dummyIdInp {
+  display: none;
+}
 /******************************/
 :root {
   --gray: #e9edf2;
@@ -61,13 +66,14 @@ body {
   background-color: var(--gray) !important;
 }
 .addemp {
-  max-width: 100%;
-  margin: auto;
+  width: 1000px !important;
+  margin: auto !important;
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  right: 30%;
+  right: 20%;
   top: 0%;
+  align-items: center;
   z-index: 4;
 }
 #overlay {
@@ -255,4 +261,44 @@ button {
   .container-fluid {
     padding: 0px !important;
   }
+}
+/* pagination */
+.tail-contents {
+  position: relative;
+}
+
+.tail {
+  position: absolute;
+  top: 120px;
+  right: 40px;
+}
+
+.tail-text {
+  min-width: 1230px;
+}
+.cnr-para {
+  color: #707eae;
+  font-size: 14px;
+  font-weight: 500;
+}
+.cornerBtn {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.activeBtn {
+  background-color: #9048c7;
+  color: rgb(0, 208, 255) !important;
+  border-color: #3d1111;
+}
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+  right: 50px;
+}
+.pg-num {
+  width: 5%;
 }

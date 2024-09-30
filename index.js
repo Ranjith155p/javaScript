@@ -1,15 +1,11 @@
 let mainDiv = document.getElementById("container");
-
+let addEmp = document.getElementById("addemp");
+let empForm = document.getElementById("add-emp");
+let close = document.getElementById("close");
+let overlay = document.getElementById("overlay");
+let cancel = document.getElementById("cancel");
 mainDiv.addEventListener("click", (event) => {
   /********** addemployee****** */
-  let addEmp = document.getElementById("addemp");
-  let empForm = document.getElementById("add-emp");
-  let close = document.getElementById("close");
-  let overlay = document.getElementById("overlay");
-  let cancel = document.getElementById("cancel");
-
-  /********** deleteemployeee ********/
-  deleteEmp = document.getElementById("delete");
 
   if (event.target === empForm) {
     addEmp.style.visibility = "visible";
@@ -23,17 +19,16 @@ mainDiv.addEventListener("click", (event) => {
     addEmp.style.visibility = "hidden";
     addEmp.style.opacity = 0;
     overlay.style.display = "none";
-  } else if (event.target === deleteEmp) {
   }
 });
-// fetch data
+// ***************fetch data***********************/
 let alldata;
 async function getData() {
   try {
     const apiUrl = "http://localhost:3000/employees";
     const response = await fetch(apiUrl);
     const data = await response.json();
-    console.log("Data fetched:", data);
+    // console.log("Data fetched:", data);
     alldata = data;
     displayData(data);
   } catch (error) {
@@ -42,8 +37,9 @@ async function getData() {
 }
 
 console.log(getData());
-
+let limit = 2;
 function displayData(data) {
+  // renderBtn(limit, alldata);
   let dataCollection = "";
   data.forEach((value, index) => {
     dataCollection += `<tr>
@@ -64,9 +60,17 @@ function displayData(data) {
             </span>
         </button>
         <ul class="dropdown-menu ">
-          <li><a class="dropdown-item active"href="#">View Details</a></li>
-          <li><a class="dropdown-item" onclick =editemployee() href="#">Edit</a></li>
-          <li><a class="dropdown-item" onclick ="deleteEmployee('${value.id}')" href="#">Delete</a></li>
+        
+       <li><a class="dropdown-item" href='./view.html?id=${
+         value.id
+       }'> View Details</a></li>
+
+          <li><a class="dropdown-item" onclick =editButton('${
+            value.id
+          }') href="#">Edit</a></li>
+          <li><a class="dropdown-item" onclick ="deleteEmployee('${
+            value.id
+          }')" href="#">Delete</a></li>
         </ul>
          </div>
       </td>
@@ -74,7 +78,9 @@ function displayData(data) {
   });
   document.getElementById("tablebody").innerHTML = dataCollection;
 }
-async function addNewEmployee(data) {
+//*************************addNewEmployee*************************/
+async function addNewEmployee() {
+  let data = formElementCollection();
   try {
     const newEmp = await fetch("http://localhost:3000/employees", {
       method: "POST",
@@ -89,9 +95,34 @@ async function addNewEmployee(data) {
     console.error("Error fetching data:", error);
   }
 }
-// console.log(male);
-
-document.getElementById("submit").addEventListener("click", () => {
+addEmp.addEventListener("click", (event) => {
+  let add = document.getElementById("add");
+  let edit = document.getElementById("submit");
+  var id = document.getElementById("dummyIdInp").value;
+  if (event.target === add) {
+    addNewEmployee();
+  }
+  if (event.target === edit) {
+    EditEmployee(id);
+  }
+});
+async function EditEmployee(id) {
+  let data = formElementCollection();
+  try {
+    const newEmp = await fetch(`http://localhost:3000/employees/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const content = await newEmp.json();
+    console.log(content);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+function formElementCollection() {
   let male = document.getElementById("male").checked;
   let gender;
   if (male) {
@@ -100,7 +131,8 @@ document.getElementById("submit").addEventListener("click", () => {
     gender = "female";
   }
   let date = document.getElementById("date").value;
-  const formElementCollection = {
+  const form = {
+    
     salutation: document.getElementById("salutation").value,
     firstName: document.getElementById("first-name").value,
     lastName: document.getElementById("last-name").value,
@@ -116,37 +148,112 @@ document.getElementById("submit").addEventListener("click", () => {
     gender: gender,
     dob: date.split("-").reverse().join("-"),
   };
-  addNewEmployee(formElementCollection);
-});
-async function editemployee()
-{
-  try {
-    const newEmp = await fetch(`http://localhost:3000/employees/${id}`, {
-      method: "",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
- catch (error) {
-  console.error("Error fetching data:", error);
+  return form;
 }
+// **********************edit*********************//
+async function editButton(id) {
+  addEmp.style.visibility = "visible";
+  addEmp.style.opacity = 1;
+  overlay.style.display = "block";
+  document.getElementById("submit").style.display = "block";
+  document.getElementById("add").style.display = "none";
+
+  let DataCollection = alldata.find((record) => record.id === id);
+  document.getElementById("salutation").value = DataCollection.salutation;
+  document.getElementById("first-name").value = DataCollection.firstName;
+  document.getElementById("last-name").value = DataCollection.lastName;
+  document.getElementById("e-mail").value = DataCollection.email;
+  document.getElementById("ph-no").value = DataCollection.phone;
+  document.getElementById("date").value = DataCollection.dob
+    .split("-")
+    .reverse()
+    .join("-");
+  document.getElementById("qualifications").value =
+    DataCollection.qualifications;
+  document.getElementById("dummyIdInp").value = DataCollection.id;
+  document.getElementById("Address").value = DataCollection.address;
+  document.getElementById("country").value = DataCollection.country;
+  document.getElementById("state").value = DataCollection.state;
+  document.getElementById("city").value = DataCollection.city;
+  document.getElementById("username").value = DataCollection.username;
+  document.getElementById("password").value = DataCollection.password;
+  document.getElementById(
+    DataCollection.gender === "male" ? "male" : "female"
+  ).checked = true;
 }
 async function deleteEmployee(id) {
   try {
-    const newEmp = await fetch(`http://localhost:3000/employees/${id}`, {
+    const deleteEmp = await fetch(`http://localhost:3000/employees/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    const content = await newEmp.json();
-     if(content){
-      const filtereData = alldata.filter((emp)=> emp.id != id)
+    const content = await deleteEmp.json();
+    if (content) {
+      const filtereData = alldata.filter((emp) => emp.id != id);
       console.log(filtereData);
-      displayData(filtereData)
-     }
+      displayData(filtereData);
+      // let deleteMsg = document.getElementById("showdelete");
+      // deleteMsg.style.display = "block";
+      // deleteMsg.innerHTML = `${
+      //   filtereData.firstName + filtereData.lastName
+      // } is deleted`;
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
+}
+
+// *********************search***************************/
+
+document.getElementById("search").addEventListener("input", (event) => {
+  searchEmployee(event);
+});
+
+function searchEmployee(event) {
+  let search = event.target.value.toLowerCase();
+  const searchData = alldata.filter((employee) => {
+    let fullname = employee.firstName + employee.lastName;
+    if (
+      employee.firstName.toLowerCase().includes(search) ||
+      employee.lastName.toLowerCase().includes(search) ||
+      employee.email.toLowerCase().includes(search) ||
+      employee.phone.toLowerCase().includes(search) ||
+      fullname.toLowerCase().includes(search)
+    ) {
+      return employee;
+    }
+  });
+  displayData(searchData);
+}
+// ************************************PAGINATION_BUTTON********************************************t
+
+function renderBtn(limit, data) {
+  let btnUl = document.getElementById("pgBtns");
+  let btnNum = Math.ceil(data.length / limit);
+  btnUl.innerHTML = "";
+  for (let i = 0; i < btnNum; i++) {
+    btnUl.innerHTML += `<li> <a class=' py-1 px-3 border '
+    id='theBtn-${i}' onclick="pagination('${i}')"> ${i + 1}</a> </li>`;
+  }
+}
+let prevBtn;
+function pagination(butonNum) {
+  if (prevBtn) {
+    document.getElementById(`theBtn-${butonNum}`).classList.remove("activeBtn");
+  }
+  prev_id = `theBtn-${butonNum}`;
+  let startindex = butonNum * limit;
+  let endIndex = startindex + limit;
+  const pageData = allData.slice(startindex, endIndex);
+  displayData(pageData);
+  document.getElementById(`theBtn-${butonNum}`).classList.add("activeBtn");
+}
+function limitCalc() {
+  limit = Number(document.getElementById("pg-limit").value);
+  const data = allData.slice(0, limit);
+  console.log(data);
+
+  displayData(data);
 }

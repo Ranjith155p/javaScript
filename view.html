@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="view.css" type="text/css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/3b0b44542c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="main-section" id="emp-sec">
+      <div class="main-container">
+        <div class="row">
+          <div class="col-2 primary-bg-clr menu">
+            <div class="col primary-clr p-3">
+              <h3 class="p-pad-mar poppins-lg">Employee</h3>
+              <p class="p-pad-mar poppins-sm">Management</p>
+            </div>
+            <div class="col">
+              <ul class="empl-mana-ul ps-4 flex-column row-gap-4 d-flex pt-3">
+                <li>
+                  <a
+                    href="#"
+                    class="empl-mana primary-clr d-flex gap-3 align-items-center"
+                    ><i class="fa-solid fa-house"></i>Dashboard</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html"
+                    class="empl-mana primary-clr d-flex gap-3 align-items-center"
+                    ><i class="fa-solid fa-chart-simple"></i>Employees</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="empl-mana primary-clr d-flex gap-3 align-items-center"
+                    ><i class="fa-solid fa-user"></i> My Profile</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="empl-mana primary-clr d-flex gap-3 align-items-center"
+                    ><i class="fa-solid fa-lock"></i> Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div
+              class="col primary-clr d-flex gap-2 align-items-center sponser"
+            >
+              <p class="p-pad-mar">Powered by</p>
+              <img src="Stackup.img.png" />
+            </div>
+          </div>
+          <div class="col-10 secondary-bg">
+            <div class="col d-flex p-3">
+              <div class="col-9 d-flex">
+                <div class="col">
+                  <p class="cnr-para p-pad-mar">Dashboard / Employees</p>
+                  <h1 class="mn-hd">Employees</h1>
+                </div>
+              </div>
+              <div class="col-3 d-flex align-items-center">
+                <div
+                  class="col d-flex align-items-center bg-white justify-content-center rounded-pill search h-75"
+                >
+                  <input
+                    type="text"
+                    placeholder="   Search"
+                    class="rounded-pill px-2 py-1 secondary-bg border border-0"
+                  />
+                  <i class="fa-regular fa-bell bell-icn-clr px-3"></i>
+                  <div>
+                    <img src="search.img.png" class="rounded-pill" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <div class="bg-white rounded-4 p-3">
+                <div class="bg-holder">
+                  <img src="profile bg.png" />
+                  <img
+                    src=" "
+                    class="rounded-circle absolute-pic"
+                    id="proImage"
+                  />
+                </div>
+                <div class="col d-flex flex-column align-items-center pt-5">
+                  <h6 class="pt-4 h6-hd" id="empName"></h6>
+                  <p class="p-pad-mar cnr-para" id="empGmail"></p>
+                </div>
+                <div class="d-flex col gap-4 pt-4">
+                  <div class="detail-bx-sm rounded-4">
+                    <p class="p-pad-mar cnr-para">Gender</p>
+                    <p class="p-pad-mar lg-p" id="empGender"></p>
+                  </div>
+                  <div class="detail-bx-sm rounded-4">
+                    <p class="p-pad-mar cnr-para">Age</p>
+                    <p class="p-pad-mar lg-p" id="empAge"></p>
+                  </div>
+                  <div class="detail-bx-sm rounded-4">
+                    <p class="p-pad-mar cnr-para">Date of Birth</p>
+                    <p class="p-pad-mar lg-p" id="empDob"></p>
+                  </div>
+                </div>
+                <div class="col d-flex lg-dtl pt-4">
+                  <div class="detail-bx rounded-4">
+                    <p class="p-pad-mar cnr-para">Mobile Number</p>
+                    <p class="p-pad-mar lg-p" id="empPhone"></p>
+                  </div>
+                  <div class="detail-bx rounded-4">
+                    <p class="p-pad-mar cnr-para">Qualifications</p>
+                    <p class="p-pad-mar lg-p" id="empQualification"></p>
+                  </div>
+                </div>
+                <div class="col d-flex lg-dtl pt-4">
+                  <div class="detail-bx rounded-4">
+                    <p class="p-pad-mar cnr-para">Address</p>
+                    <p class="p-pad-mar lg-p" id="empAddress"></p>
+                  </div>
+                  <div class="detail-bx rounded-4">
+                    <p class="p-pad-mar cnr-para">Username</p>
+                    <p class="p-pad-mar lg-p" id="empUserName"></p>
+                  </div>
+                </div>
+                <div class="col pb-4 pt-5 d-flex justify-content-end gap-1">
+                  <button
+                    type="button"
+                    class="btn btn-danger rounded-4 py-3 px-5"
+                    id="dltBtn"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary rounded-4 py-3 px-5"
+                    id="editBtn"
+                  >
+                    Edit Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col d-flex pd-tp">
+              <div class="col-9">
+                <p class="cnr-para">© 2023 All Rights Reserved. Stackup</p>
+              </div>
+              <div class="col d-flex gap-4">
+                <p class="cnr-para">Terms of Use</p>
+                <p class="cnr-para">Privacy Policy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="overlay"></div>
+      <div class="form2" id="BasicDtl">
+        <div class="col bg-white row-f d-flex flex-column p-3 main-border">
+          <div>
+            <h2 class="main-ft-sz fw-bolder text-primary-emphasis">
+              Add Employee
+            </h2>
+          </div>
+          <form>
+            <label
+              for="viewProImage"
+              class="col h-img-inp d-flex flex-column align-items-center justify-content-center dash-border img-ft-sz fw-bolder"
+            >
+              <i class="fa-solid fa-upload main-clr"></i>
+              <h4 class="main-clr img-ft-sz fw-bolder">Upload Image</h4>
+              <input
+                type="file"
+                id="viewProImage"
+                class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd d-none"
+              />
+              <h6 class="sm-ft-sz text-black-50">PNG, JPG files are allowed</h6>
+            </label>
+            <div class="row">
+              <div class="col-lg-3 col-sm-12">
+                <label
+                  for="salutation"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Salutation</label
+                >
+                <select
+                  id="salutation"
+                  class="form-select fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                >
+                  <option>select</option>
+                  <option>Mr.</option>
+                  <option>Ms.</option>
+                </select>
+                <p id="salutationErr" class="red"></p>
+              </div>
+              <div class="col-lg-4 col-sm-12">
+                <label
+                  for="firstName"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  id="firstName"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="John"
+                />
+                <p id="firstnameErr" class="red"></p>
+              </div>
+              <div class="col-lg-4 col-sm-12">
+                <label
+                  for="lastName"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Last Name</label
+                >
+                <input
+                  type="text"
+                  id="lastName"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="Doe"
+                />
+                <p id="lastnameErr" class="red"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="email"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="mail@example.com"
+                />
+                <p id="emailErr" class="red"></p>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="mobileNumber"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Mobile Number</label
+                >
+                <input
+                  type="text"
+                  id="mobileNumber"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="Enter mobile number"
+                />
+                <p id="mobileNumErr" class="red"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="dob"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Date of Birth</label
+                >
+                <input
+                  type="date"
+                  id="dob"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                />
+                <p id="dobErr" class="red"></p>
+              </div>
+              <div
+                class="col text-primary-emphasis fw-medium normal-ft-sz mt-4"
+              >
+                <div class="form-label">Gender</div>
+                <div class="col mt-3 d-flex gap-2">
+                  <input type="radio" name="gender" id="male" value="male" />
+                  <label for="male"> Male </label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    value="female"
+                  />
+                  <label for="female"> Female </label>
+                  <p id="genderErr" class="red"></p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label
+                  for="Qualifications"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Qualifications</label
+                >
+                <input
+                  type="text"
+                  id="Qualifications"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="Enter Qualifications"
+                />
+                <p id="qualificationErr"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label
+                  for="address"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  id="address"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="Enter address"
+                />
+                <p id="addressErr" class="red"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="country"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Country</label
+                >
+                <select
+                  id="country"
+                  class="form-select fw-normal normal-ft-sz text-black-50 border-rd"
+                >
+                  <option>Select country</option>
+                  <option>India</option>
+                  <option>China</option>
+                  <option>Japan</option>
+                  <option>USA</option>
+                </select>
+                <p id="countryErr" class="red"></p>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="state"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >State</label
+                >
+                <select
+                  id="state"
+                  class="form-select fw-normal normal-ft-sz text-black-50 border-rd"
+                >
+                  <option>Select state</option>
+                  <option>Kerala</option>
+                  <option>Tamil Nadu</option>
+                  <option>Karnataka</option>
+                </select>
+                <p id="stateErr" class="red"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="city"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >City</label
+                >
+                <input
+                  type="text"
+                  id="city"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="city"
+                />
+                <p id="cityErr" class="red"></p>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="zip"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Pin/Zip</label
+                >
+                <input
+                  type="text"
+                  id="zip"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="Enter zip/pin"
+                />
+                <p id="zipErr" class="red"></p>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="username"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="Username"
+                />
+                <p id="usernameErr" class="red"></p>
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                <label
+                  for="password"
+                  class="form-label text-primary-emphasis fw-medium normal-ft-sz mt-4"
+                  >Password</label
+                >
+                <input
+                  type="text"
+                  id="password"
+                  class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd"
+                  placeholder="Password"
+                />
+                <p id="passwordErr" class="red"></p>
+              </div>
+            </div>
+            <div class="pt-4 pb-3 d-flex justify-content-end gap-1">
+              <button
+                type="button"
+                class="btn btn-info info-clr px-4 py-3 rounded-4"
+                id="formCancelBtn"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary rounded-4 px-4 py-3"
+                id="submit"
+              >
+                save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- ************************ -->
+
+    <script src="view.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
