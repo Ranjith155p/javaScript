@@ -85,7 +85,12 @@
                 <div class="col fs-4 p-0 d-flex gap-3 align-items-center">
                   <h4>Employees List</h4>
                   <div class="pg-num">
-                    <select id="pg-limit"class="form-select" onchange="limitCalc()" aria-label="Default select example">
+                    <select
+                      id="pg-limit"
+                      class="form-select"
+                      onchange="limitCalc()"
+                      aria-label="Default select example"
+                    >
                       <option>1</option>
                       <option selected>2</option>
                       <option>3</option>
@@ -141,22 +146,27 @@
           </div>
 
           <!-- add emp form -->
-          <div
+          <form
             class="row mx-auto my-4 addemp breaking-form column-gap-4 rounded-4"
             id="addemp"
           >
             <div class="col formarea d-flex flex-column gap-4 rounded-4 p-4">
               <div class="d-flex justify-content-between">
                 <h3 class="m-0">Add Employee</h3>
-                <button id="close" class="material-symbols-outlined">
+                <!-- <button id="close" class="material-symbols-outlined">
                   close
-                </button>
+                </button> -->
               </div>
+              <input
+                type="file"
+                id="viewProImage"
+                class="form-control fw-normal normal-ft-sz text-black-50 border border-2 border-rd d-none"
+              />
               <label
                 for="Upload-file"
                 class="upload-area d-flex flex-column gap-2 p-4 text-center"
               >
-                <input class="shadow-none" type="file" id="Upload-file" />
+                <input class="shadow-none" type="file" id="proImage" />
                 <i class="fa-solid fa-upload"></i>
                 <h5 class="m-0">Upload-file</h5>
                 <p class="small-text text-secondary-emphasis m-0">
@@ -176,6 +186,7 @@
                     <option></option>
                     <option>Mrs</option>
                   </select>
+                  <p id="salutationErr" class="red"></p>
                 </div>
                 <div class="col-md">
                   <label for="first-name" class="form-item">First Name </label>
@@ -185,6 +196,7 @@
                     placeholder="John"
                     id="first-name"
                   />
+                  <p id="firstnameErr" class="red"></p>
                 </div>
                 <input
                   type="text"
@@ -201,6 +213,7 @@
                     placeholder="Doe"
                     id="last-name"
                   />
+                  <p id="lastnameErr" class="red"></p>
                 </div>
               </div>
               <div class="row row-collaps">
@@ -212,6 +225,7 @@
                     placeholder="mail@simmmple.com"
                     id="e-mail"
                   />
+                  <p id="emailErr" class="red"></p>
                 </div>
                 <div class="col-md-6">
                   <label for="ph-no" class="form-item">Mobile Number </label>
@@ -221,6 +235,7 @@
                     placeholder="enter mobile number"
                     id="ph-no"
                   />
+                  <p id="mobileNumErr" class="red"></p>
                 </div>
               </div>
               <div class="row gender-collaps">
@@ -232,6 +247,7 @@
                     placeholder="select date of birth"
                     id="date"
                   />
+                  <p id="dobErr" class="red"></p>
                 </div>
                 <div class="col-6">
                   <label for="gender" class="form-item">Gender </label>
@@ -251,6 +267,7 @@
                       <label class="form-check-label p-0" for="male"
                         >Male</label
                       >
+                      <p id="genderErr"></p>
                     </div>
                     <div
                       class="col-4 half-width gap-2 d-flex align-items-center"
@@ -281,6 +298,7 @@
                     placeholder=" qualifications"
                     id="qualifications"
                   />
+                  <p id="qualificationErr" class="red"></p>
                 </div>
               </div>
               <div class="row">
@@ -292,6 +310,7 @@
                     placeholder=" Enter Address"
                     id="Address"
                   />
+                  <p id="addressErr" class="red"></p>
                 </div>
               </div>
               <div class="row row-collaps">
@@ -302,12 +321,13 @@
                     aria-label="Default select example"
                     id="country"
                   >
-                    <option>India</option>
+                    <option selected>India</option>
                     <option>Pakistan</option>
                     <option>England</option>
                     <option>Us</option>
                     <option>England</option>
                   </select>
+                  <p id="countryErr" class="red"></p>
                 </div>
                 <div class="col-md-6">
                   <label for="state" class="form-item"> State </label>
@@ -316,11 +336,11 @@
                     aria-label="Default select example"
                     id="state"
                   >
-                    <option selected>select state</option>
-                    <option value="1">Kerala</option>
-                    <option value="2">Tamilnadu</option>
-                    <option value="3">Karnataka</option>
+                    <option selected>Kerala</option>
+                    <option>Tamilnadu</option>
+                    <option>Karnataka</option>
                   </select>
+                  <p id="stateErr" class="red"></p>
                 </div>
               </div>
               <div class="row row-collaps">
@@ -332,15 +352,17 @@
                     placeholder="enter city"
                     id="city"
                   />
+                  <p id="cityErr" class="red"></p>
                 </div>
                 <div class="col-md-6">
-                  <label for="pin" class="form-item">Zip/Pin </label>
+                  <label for="zip" class="form-item">Zip/Pin </label>
                   <input
                     type="text"
                     class="form-control rounded-4 shadow-none"
                     placeholder="enter zip/pin"
-                    id="pin"
+                    id="zip"
                   />
+                  <p id="zipErr" class="red"></p>
                 </div>
               </div>
               <div class="row row-collaps">
@@ -352,6 +374,7 @@
                     placeholder="mail@simmmple.com"
                     id="username"
                   />
+                  <p id="userNameErr" class="red"></p>
                 </div>
                 <div class="col-md-6">
                   <label for="password" class="form-item"> password</label>
@@ -361,6 +384,7 @@
                     placeholder="enter mobile number"
                     id="password"
                   />
+                  <p id="passwordErr" class="red"></p>
                 </div>
               </div>
               <div class="d-flex justify-content-end">
@@ -383,7 +407,7 @@
                 </button>
               </div>
             </div>
-          </div>
+          </form>
           <!-- add emp form end-->
 
           <div id="overlay"></div>
@@ -392,6 +416,7 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="index.js"></script>
   </body>
 </html>
